@@ -1,206 +1,221 @@
 # Digital Catalogue Web App
 
-A modern web application that allows businesses to upload PDF catalogues and enables customers to browse and select items interactively.
-
-## 🚀 Live Demo
-**Status: Ready for Production Deployment**
+A modern web application that allows customers to upload PDF catalogues, browse through pages, select items they want, and submit their selections with contact information.
 
 ## Features
 
-### 🚀 Core Functionality
-- **PDF Upload**: Upload PDF catalogues that are automatically converted to browsable images
-- **Interactive Browsing**: Customers can scroll through all pages and select desired items
-- **Customer Information**: Collect customer details with their selections
-- **Admin Panel**: View all customer selections and inquiries
+- **PDF Upload**: Drag & drop or click to upload PDF files (up to 10MB)
+- **PDF Viewer**: 
+  - View PDFs page by page or in grid view
+  - Interactive page selection with visual feedback
+  - Responsive design for all devices
+- **Selection Management**: 
+  - Select/deselect individual pages
+  - Bulk select/deselect all pages
+  - Visual confirmation of selected items
+- **Customer Form**: Collect customer information with validation
+- **Submission**: Process and handle customer selections
+- **Modern UI**: Clean, responsive design with Tailwind CSS
 
-### 🎨 User Experience
-- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
-- **Drag & Drop**: Easy PDF upload with drag and drop support
-- **Visual Selection**: Clear visual indicators for selected items
-- **Progress Tracking**: Real-time upload and processing feedback
+## Tech Stack
 
-### 🛠 Technical Features
-- **PDF to Image Conversion**: Automatic conversion using pdf-poppler
-- **File Management**: Organized storage of uploads and selections
-- **RESTful API**: Clean API endpoints for all operations
-- **Error Handling**: Comprehensive error handling and user feedback
+- **Framework**: Next.js 14 with TypeScript
+- **Styling**: Tailwind CSS
+- **PDF Handling**: react-pdf with PDF.js
+- **Icons**: Heroicons
+- **Deployment**: Vercel
 
-## Installation
+## Getting Started
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
 
-### Local Setup
+- Node.js 18+ installed
+- npm or yarn package manager
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Keyursinh06-s/digital-catalogue-app.git
-   cd digital-catalogue-app
-   ```
+### Installation
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd digital-catalogue-app
+```
 
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+2. Install dependencies:
+```bash
+npm install
+```
 
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
+3. Run the development server:
+```bash
+npm run dev
+```
 
-### Production Setup
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-1. **Install dependencies**
-   ```bash
-   npm install --production
-   ```
+## Project Structure
 
-2. **Start the server**
-   ```bash
-   npm start
-   ```
+```
+├── app/
+│   ├── components/           # React components
+│   │   ├── PDFUpload.tsx    # File upload component
+│   │   ├── PDFViewer.tsx    # PDF viewing and selection
+│   │   └── SelectionSummary.tsx # Review and submission
+│   ├── api/
+│   │   └── submit-selection/ # API endpoint for form submissions
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Main page component
+├── public/                  # Static files
+├── tailwind.config.js       # Tailwind configuration
+├── next.config.js           # Next.js configuration
+├── vercel.json             # Vercel deployment config
+└── package.json            # Dependencies and scripts
+```
 
 ## Usage
 
-### For Business Owners
-
-1. **Upload Catalogue**
-   - Click the upload area or drag and drop your PDF catalogue
-   - Wait for the PDF to be processed into browsable pages
-
-2. **Share with Customers**
-   - Share the application URL with your customers
-   - Customers can browse and select items they want
-
-3. **View Selections**
-   - Use the Admin Panel to view all customer selections
-   - Get customer contact information and selected items
-
 ### For Customers
 
-1. **Browse Catalogue**
-   - Scroll through all pages of the catalogue
-   - Click on pages/items you want to select
+1. **Upload PDF**: Drag and drop or browse to select a PDF catalogue
+2. **Browse Pages**: View all pages in single-page or grid view
+3. **Select Items**: Click on pages to select items you want
+4. **Review Selection**: Review selected pages and enter contact information
+5. **Submit**: Submit your selection to receive a quote
 
-2. **Provide Information**
-   - Fill in your contact details
-   - Add any additional notes or requirements
+### For Business Owners
 
-3. **Submit Selection**
-   - Submit your selection to the business
-   - Receive confirmation of your inquiry
+The app collects customer selections and contact information. You can extend the API endpoint to:
 
-## API Endpoints
-
-### Upload PDF
-```
-POST /upload
-Content-Type: multipart/form-data
-Body: PDF file
-```
-
-### Submit Selection
-```
-POST /submit-selection
-Content-Type: application/json
-Body: {
-  catalogueId: string,
-  selectedPages: number[],
-  customerInfo: object
-}
-```
-
-### Get Selections (Admin)
-```
-GET /admin/selections
-```
-
-## File Structure
-
-```
-digital-catalogue-app/
-├── public/
-│   ├── index.html          # Main HTML file
-│   ├── styles.css          # CSS styling
-│   └── script.js           # Frontend JavaScript
-├── uploads/
-│   ├── images/             # Converted PDF pages
-│   └── selections/         # Customer selections
-├── server.js               # Express server
-├── package.json            # Dependencies
-└── README.md              # Documentation
-```
-
-## Dependencies
-
-### Backend
-- **express**: Web framework
-- **multer**: File upload handling
-- **pdf-poppler**: PDF to image conversion
-- **cors**: Cross-origin resource sharing
-
-### Frontend
-- **Vanilla JavaScript**: No framework dependencies
-- **Modern CSS**: Grid, Flexbox, and animations
-- **Responsive Design**: Mobile-first approach
-
-## Deployment
-
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Deploy automatically with each push
-3. Environment variables are handled automatically
-
-### Other Platforms
-- **Heroku**: Add `Procfile` with `web: node server.js`
-- **Railway**: Works out of the box
-- **DigitalOcean**: Use App Platform for easy deployment
+- Save submissions to a database
+- Send email notifications
+- Integrate with CRM systems
+- Generate quotes automatically
 
 ## Customization
 
 ### Styling
-- Modify `public/styles.css` for custom branding
-- Update colors, fonts, and layout as needed
 
-### Functionality
-- Add database integration for persistent storage
-- Implement user authentication for admin features
-- Add email notifications for new selections
+The app uses Tailwind CSS for styling. You can customize:
+
+- Colors in `tailwind.config.js`
+- Component styles in `app/globals.css`
+- Individual component styling in each `.tsx` file
+
+### Business Logic
+
+Extend the submission handler in `app/api/submit-selection/route.ts` to:
+
+```typescript
+// Example: Save to database
+await db.submissions.create({
+  fileName: data.fileName,
+  selectedPages: data.selectedPages,
+  customerInfo: data.customerInfo,
+  createdAt: new Date()
+})
+
+// Example: Send emails
+await emailService.send({
+  to: data.customerInfo.email,
+  subject: 'Selection Confirmation',
+  template: 'confirmation',
+  data: data
+})
+```
+
+## Deployment on Vercel
+
+### Quick Deploy
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
+
+### Manual Deploy
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Deploy:
+```bash
+vercel
+```
+
+### Environment Variables
+
+For production, you may want to set:
+
+- `DATABASE_URL` - Database connection string
+- `EMAIL_API_KEY` - Email service API key
+- `SMTP_*` - SMTP configuration for emails
+
+Add these in your Vercel dashboard under Settings > Environment Variables.
+
+## File Size Limits
+
+- PDF upload limit: 10MB (configurable in `next.config.js`)
+- Vercel function timeout: 30 seconds (configurable in `vercel.json`)
 
 ## Browser Support
 
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
-- Mobile browsers
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Performance
+
+The app is optimized for:
+- Fast PDF rendering with react-pdf
+- Responsive image loading
+- Minimal bundle size
+- Server-side rendering where beneficial
+
+## Troubleshooting
+
+### PDF not loading
+- Check file size (max 10MB)
+- Ensure valid PDF format
+- Check browser console for errors
+
+### Upload failing
+- Verify network connection
+- Check file permissions
+- Ensure proper MIME type
+
+### Deployment issues
+- Check build logs in Vercel dashboard
+- Verify all dependencies are in `package.json`
+- Ensure environment variables are set
 
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Submit a pull request
+4. Test thoroughly
+5. Submit a pull request
 
 ## License
 
-MIT License - feel free to use this project for commercial purposes.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Support
 
-For issues and questions:
-- Create an issue on GitHub
-- Check the documentation
-- Review the code comments
+For support and questions:
+- Check the troubleshooting section
+- Open an issue on GitHub
+- Contact [your-email@example.com]
 
----
+## Roadmap
 
-**Built with ❤️ for modern businesses**
-
-## 🚀 Quick Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Keyursinh06-s/digital-catalogue-app)
+Future enhancements may include:
+- Multi-file upload support
+- Advanced PDF annotations
+- User accounts and history
+- Administrative dashboard
+- Email automation
+- Database integration
+- Payment processing integration
