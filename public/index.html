@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Catalogue App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Digital Catalogue</h1>
+            <p>Upload your PDF catalogue and let customers select items</p>
+        </header>
+
+        <!-- Upload Section -->
+        <div id="upload-section" class="section">
+            <div class="upload-area">
+                <input type="file" id="pdf-input" accept=".pdf" style="display: none;">
+                <div class="upload-box" onclick="document.getElementById('pdf-input').click()">
+                    <div class="upload-icon">📄</div>
+                    <h3>Upload PDF Catalogue</h3>
+                    <p>Click here or drag and drop your PDF file</p>
+                </div>
+            </div>
+            <div id="upload-progress" class="progress-bar" style="display: none;">
+                <div class="progress-fill"></div>
+                <span class="progress-text">Processing PDF...</span>
+            </div>
+        </div>
+
+        <!-- Catalogue Viewer Section -->
+        <div id="catalogue-section" class="section" style="display: none;">
+            <div class="catalogue-header">
+                <h2>Select Items from Catalogue</h2>
+                <div class="selection-info">
+                    <span id="selection-count">0 items selected</span>
+                    <button id="clear-selection" class="btn btn-secondary">Clear All</button>
+                </div>
+            </div>
+            
+            <div id="catalogue-grid" class="catalogue-grid">
+                <!-- Pages will be loaded here -->
+            </div>
+
+            <div class="customer-form">
+                <h3>Customer Information</h3>
+                <form id="customer-form">
+                    <div class="form-group">
+                        <label for="customer-name">Name:</label>
+                        <input type="text" id="customer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email:</label>
+                        <input type="email" id="customer-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Phone:</label>
+                        <input type="tel" id="customer-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-notes">Additional Notes:</label>
+                        <textarea id="customer-notes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Selection</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Section -->
+        <div id="admin-section" class="section">
+            <div class="admin-header">
+                <h2>Admin Panel</h2>
+                <button id="view-selections" class="btn btn-secondary">View All Selections</button>
+            </div>
+            <div id="selections-list" class="selections-list" style="display: none;">
+                <!-- Selections will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
