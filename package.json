@@ -1,25 +1,31 @@
 {
   "name": "digital-catalogue-app",
-  "version": "1.0.0",
-  "description": "Digital catalogue web app for PDF uploads and customer selection",
-  "main": "server.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "build": "echo 'Build complete'"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "multer": "^1.4.5-lts.1",
-    "pdf-poppler": "^0.2.1",
-    "cors": "^2.8.5",
-    "path": "^0.12.7",
-    "fs": "^0.0.1-security"
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-pdf": "^7.6.0",
+    "pdfjs-dist": "^3.11.174",
+    "@heroicons/react": "^2.0.18",
+    "clsx": "^2.0.0",
+    "tailwindcss": "^3.3.6",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
-  },
-  "engines": {
-    "node": ">=16.0.0"
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4"
   }
 }
